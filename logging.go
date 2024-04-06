@@ -13,8 +13,13 @@ import (
 	"github.com/mattn/go-isatty"
 )
 
-func NewLogger(format LogFormat, level LogLevel) (*slog.Logger, error) {
+func NewLogger(config *LogConfig) (*slog.Logger, error) {
 	var log *slog.Logger
+	format := config.Format
+	level := config.Level
+	if config.Verbose {
+		level = LEVEL_DEBUG
+	}
 
 	switch format {
 	case FORMAT_PRETTY:

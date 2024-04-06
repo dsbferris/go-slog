@@ -4,6 +4,9 @@ import (
 	_ "github.com/jessevdk/go-flags"
 )
 
+// You can use [LogConfig] like this:
+//
+// Log goslog.LogConfig `group:"Log Options" namespace:"log" env-namespace:"LOG"`
 type LogConfig struct {
 	Verbose bool      `short:"v" long:"verbose" env:"VERBOSE" description:"Short hand for log level debug. Will override any setting for level"`
 	Level   LogLevel  `short:"l" long:"level" env:"LEVEL" default:"warn" choice:"debug" choice:"info" choice:"warn" choice:"error" description:"Log level"`
